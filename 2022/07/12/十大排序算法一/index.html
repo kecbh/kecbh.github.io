@@ -16,18 +16,21 @@
   <meta name="author" content="cbh">
   <meta name="keywords" content="">
   
-    <meta name="description" content="冒泡排序 这是一种基于交换的排序，这里用升序举例，若后一个数比当前的数小则交换两者数值，以此进行到 末尾两个数为止。这样最大的数就被排到了最后一位，下一轮又把第二大的数排到倒数第二位，依此类推。 最终我们一共要冒泡n次，每次冒泡循环n-1次 n+1&#x3D;nn+1&#x3D;n n+1&#x3D;n 下面是基础的冒泡排序: 1234567891011121314151617181920212223242526272829">
+    <meta name="description" content="经典排序(C语言版)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="十大排序算法(经典)">
 <meta property="og:url" content="http://example.com/2022/07/12/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B8%80/index.html">
 <meta property="og:site_name" content="偑のblog">
-<meta property="og:description" content="冒泡排序 这是一种基于交换的排序，这里用升序举例，若后一个数比当前的数小则交换两者数值，以此进行到 末尾两个数为止。这样最大的数就被排到了最后一位，下一轮又把第二大的数排到倒数第二位，依此类推。 最终我们一共要冒泡n次，每次冒泡循环n-1次 n+1&#x3D;nn+1&#x3D;n n+1&#x3D;n 下面是基础的冒泡排序: 1234567891011121314151617181920212223242526272829">
+<meta property="og:description" content="经典排序(C语言版)">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/0713.png">
+<meta property="og:image" content="http://example.com/img/0713.png">
 <meta property="article:published_time" content="2022-07-12T13:09:17.000Z">
-<meta property="article:modified_time" content="2022-07-12T17:01:07.238Z">
+<meta property="article:modified_time" content="2022-07-13T01:56:26.289Z">
 <meta property="article:author" content="cbh">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/0713.png">
   
   
   
@@ -221,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          851 字
+          1.4k 字
         
       </span>
     
@@ -232,7 +235,7 @@
         
         
         
-          8 分钟
+          12 分钟
         
       </span>
     
@@ -278,11 +281,19 @@
                 <h1 id="冒泡排序"><a class="markdownIt-Anchor" href="#冒泡排序"></a> 冒泡排序</h1>
 <p>这是一种基于交换的排序，这里用升序举例，若后一个数比当前的数小则交换两者数值，以此进行到<br />
 末尾两个数为止。这样最大的数就被排到了最后一位，下一轮又把第二大的数排到倒数第二位，依此类推。<br />
-最终我们一共要冒泡n次，每次冒泡循环n-1次</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>+</mo><mn>1</mn><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n+1=n
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span></span></p>
-<p>下面是基础的冒泡排序:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXSIZE 20</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showArr</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[],<span class="hljs-type">int</span> length)</span>   <span class="hljs-comment">//打印数组</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,arr[i]);<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n----------------------------\n&quot;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sortArr</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[],<span class="hljs-type">int</span> length)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span> (length-- &amp;&amp; flag)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span> (arr[i+<span class="hljs-number">1</span>]&lt;arr[i])<br>            &#123;<br>                <span class="hljs-type">int</span> temp=arr[i];<br>                arr[i]=arr[i+<span class="hljs-number">1</span>];<br>                arr[i+<span class="hljs-number">1</span>]=temp;<br>            &#125;<br>        &#125; <br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> arr[MAXSIZE]=&#123;<span class="hljs-number">11</span>,<span class="hljs-number">21</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">67</span>,<span class="hljs-number">8</span>,<span class="hljs-number">35</span>,<span class="hljs-number">0</span>,<span class="hljs-number">23</span>,<span class="hljs-number">45</span>,<span class="hljs-number">67</span>,<span class="hljs-number">89</span>,<span class="hljs-number">45</span>,<span class="hljs-number">17</span>,<span class="hljs-number">6</span>,<span class="hljs-number">2</span>,<span class="hljs-number">75</span>,<span class="hljs-number">15</span>,<span class="hljs-number">17</span>,<span class="hljs-number">18</span>&#125;;<br>    <span class="hljs-built_in">showArr</span>(arr,MAXSIZE);    <span class="hljs-comment">//初始序列</span><br>    <span class="hljs-built_in">sortArr</span>(arr,MAXSIZE);<br>    <span class="hljs-built_in">showArr</span>(arr,MAXSIZE);    <span class="hljs-comment">//排序后序列</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//这是优化过的冒泡排序，筛选掉了后期的无效排序</span><br></code></pre></td></tr></table></figure>
+最终我们一共要冒泡n次，每次冒泡循环n-1次<br />
+下面是基础的冒泡排序:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXSIZE 20</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showArr</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[],<span class="hljs-type">int</span> length)</span>   <span class="hljs-comment">//打印数组</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,arr[i]);<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n----------------------------\n&quot;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sortArr</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[],<span class="hljs-type">int</span> length)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span> (length-- &amp;&amp; flag)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span> (arr[i+<span class="hljs-number">1</span>]&lt;arr[i])<br>            &#123;<br>                <span class="hljs-type">int</span> temp=arr[i];<br>                arr[i]=arr[i+<span class="hljs-number">1</span>];<br>                arr[i+<span class="hljs-number">1</span>]=temp;<br>            &#125;<br>        &#125; <br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> arr[MAXSIZE]=&#123;<span class="hljs-number">11</span>,<span class="hljs-number">21</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">67</span>,<span class="hljs-number">8</span>,<span class="hljs-number">35</span>,<span class="hljs-number">0</span>,<span class="hljs-number">23</span>,<span class="hljs-number">45</span>,<span class="hljs-number">67</span>,<span class="hljs-number">89</span>,<span class="hljs-number">45</span>,<span class="hljs-number">17</span>,<span class="hljs-number">6</span>,<span class="hljs-number">2</span>,<span class="hljs-number">75</span>,<span class="hljs-number">15</span>,<span class="hljs-number">17</span>,<span class="hljs-number">18</span>&#125;;<br>    <span class="hljs-built_in">showArr</span>(arr,MAXSIZE);    <span class="hljs-comment">//初始序列</span><br>    <span class="hljs-built_in">sortArr</span>(arr,MAXSIZE);<br>    <span class="hljs-built_in">showArr</span>(arr,MAXSIZE);    <span class="hljs-comment">//排序后序列</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//这是基础版的冒泡排序</span><br></code></pre></td></tr></table></figure>
+<p>考虑上面的排序机制，可以发现，每一次都会进行完整的冒泡，这样不管原本的序列混乱度如何，每次都会把程序执行完。因此考虑让程序优化。<br />
+优化思路:设置flag来检测当前序列是否已经达到完全有序状态，若达到，这不在，不在继续循环。若未依旧没有排好序则继续执行程序。<br />
+运行结果：<br />
+<img src="/img/0713.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-comment">//其它地方都一样，我们只改变排序函数sortArr</span><br><span class="hljs-type">void</span> sortArr(<span class="hljs-type">int</span> arr[],<span class="hljs-type">int</span> <span class="hljs-built_in">length</span>)<br>&#123;<br>    <span class="hljs-type">int</span> flag=<span class="hljs-number">1</span>;<br>    <span class="hljs-comment">//flag为1则进入循环表示当前数组不是完全有序的</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">length</span>-- &amp;&amp; flag)<br>    &#123;<br>         flag=<span class="hljs-number">0</span>;<br>         <span class="hljs-comment">//把flag置0</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">length</span>; i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span> (arr[i+<span class="hljs-number">1</span>]&lt;arr[i])<br>            &#123;<br>                flag=<span class="hljs-number">1</span>;<br>                <span class="hljs-comment">//出现了非有序关系。所仪改变flag为1</span><br>                <span class="hljs-type">int</span> temp=arr[i];<br>                arr[i]=arr[i+<span class="hljs-number">1</span>];<br>                arr[i+<span class="hljs-number">1</span>]=temp;<br>            &#125;<br>        &#125; <br>    &#125;<br>&#125;<br><span class="hljs-comment">//这是优化过的冒泡排序，筛选掉了后期的无效排序</span><br></code></pre></td></tr></table></figure>
+<p>运行结果:<br />
+<img src="/img/0713.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+我们看到结果一致，但比较两种机制，显然优化后的程序效率有略微提升。</p>
+<h1 id="选择排序"><a class="markdownIt-Anchor" href="#选择排序"></a> 选择排序</h1>
+
                 
               </div>
             
@@ -352,12 +363,6 @@
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2022/07/11/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
