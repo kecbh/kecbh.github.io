@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://example.com/img/0714.png">
 <meta property="og:image" content="http://example.com/img/0715.png">
 <meta property="article:published_time" content="2022-07-12T13:09:17.000Z">
-<meta property="article:modified_time" content="2022-07-14T08:18:15.700Z">
+<meta property="article:modified_time" content="2022-07-15T11:33:59.757Z">
 <meta property="article:author" content="cbh">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary_large_image">
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          3.2k 字
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
         
-          21 分钟
+          27 分钟
         
       </span>
     
@@ -280,7 +280,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="冒泡排序"><a class="markdownIt-Anchor" href="#冒泡排序"></a> 冒泡排序</h1>
+                <h1 id="一冒泡排序"><a class="markdownIt-Anchor" href="#一冒泡排序"></a> (一)冒泡排序</h1>
 <p>这是一种基于交换的排序，这里用升序举例，若后一个数比当前的数小则交换两者数值，以此进行到<br />
 末尾两个数为止。这样最大的数就被排到了最后一位，下一轮又把第二大的数排到倒数第二位，依此类推。<br />
 最终我们一共要冒泡n次，每次冒泡循环n-1次<br />
@@ -294,7 +294,7 @@
 <p>运行结果:<br />
 <img src="/img/0713.png" srcset="/img/loading.gif" lazyload alt="" /><br />
 我们看到结果一致，但比较两种机制，显然优化后的程序效率有略微提升。</p>
-<h1 id="选择排序"><a class="markdownIt-Anchor" href="#选择排序"></a> 选择排序</h1>
+<h1 id="二选择排序"><a class="markdownIt-Anchor" href="#二选择排序"></a> (二)选择排序</h1>
 <p>这是基于冒泡排序的的改进，在每一轮比较中选出最小的放到最前面，<br />
 以此进行n-1轮，因为最后一轮只有一个数，所以不用在进行交换。<br />
 下面是选择排序的函数:</p>
@@ -303,7 +303,7 @@
 主函数中调用后运行结果:<br />
 <img src="/img/0714.png" srcset="/img/loading.gif" lazyload alt="" /><br />
 结果依然未变</p>
-<h1 id="插入排序"><a class="markdownIt-Anchor" href="#插入排序"></a> 插入排序</h1>
+<h1 id="三插入排序"><a class="markdownIt-Anchor" href="#三插入排序"></a> (三)插入排序</h1>
 <p>插入排序是专门针对有序度高的序列的排序，思想是通过交换，<br />
 在其实现过程使用双层循环，外层循环对除了第一个元素之外的所有元素，内层循环对当前元素前面有序表进行待插入位置查找，并进行移动。对于数量少且有序度高的序列，其效率可观。<br />
 插入排序函数:</p>
@@ -311,6 +311,11 @@
 <p>结果展示:<br />
 <img src="/img/0715.png" srcset="/img/loading.gif" lazyload alt="" /><br />
 可以看到，对于有序数组，插入排序效率明显高于冒泡和选择。</p>
+<h1 id="四希尔排序"><a class="markdownIt-Anchor" href="#四希尔排序"></a> (四)希尔排序</h1>
+<p>优化版的插入排序，原来插入排序的步长是1，希尔排序的步长可以很大，然后逐渐减小到1形成插入排序</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">void</span> shell(<span class="hljs-type">int</span> arr[],<span class="hljs-type">int</span> <span class="hljs-built_in">length</span>)<br>&#123;<br>    <span class="hljs-type">int</span> h=<span class="hljs-built_in">length</span>/<span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">while</span> (h&gt;=<span class="hljs-number">1</span>)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=h;i&lt;<span class="hljs-built_in">length</span>;i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=i;j&gt;=h &amp;&amp; arr[j]&lt;arr[j-h];j--)<br>        &#123;<br>            <span class="hljs-type">int</span> temp=arr[j];<br>            arr[j]=arr[j-h];<br>            arr[j-h]=temp;<br>        &#125;<br>    &#125;<br>    h/=<span class="hljs-number">2</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>希尔排序的效率完全取决于步长序列的选取，目前希尔排序的最优步长序列是“希尔序列” ；1，4，…,3n+1,所以经典的希尔排序如下:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs routeros">void shell(int arr[],int length)<br>&#123;<br>    int <span class="hljs-attribute">h</span>=1;<br>    int <span class="hljs-attribute">t</span>=length/3;<br>    <span class="hljs-keyword">while</span>(h&lt;t)<br>    &#123;<br>        <span class="hljs-attribute">h</span>=3*h+1;<br>    &#125;<br>    <span class="hljs-keyword">while</span> (h&gt;=1)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(int <span class="hljs-attribute">i</span>=h;i&lt;length;i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(int <span class="hljs-attribute">j</span>=i;j&gt;=h &amp;&amp; arr[j]&lt;arr[j-h];j--)<br>        &#123;<br>            int <span class="hljs-attribute">temp</span>=arr[j];<br>            arr[j]=arr[j-h];<br>            arr[j-h]=temp;<br>        &#125;<br>    &#125;<br>    h/=3;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
